@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My AI Tools</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    button { padding: 12px 20px; font-size: 16px; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>👋 Welcome to My AI Automations</h1>
+  <p>Click below to try them:</p>
+
+  <button onclick="callAutomation('cover-letter')">Generate Cover Letter</button>
+  <button onclick="callAutomation('resume-review')">Resume Review</button>
+
+  <p id="output"></p>
+
+  <script>
+    async function callAutomation(type) {
+      const urls = {
+        'cover-letter': 'https://dependable-feedom.up.railway.app/webhook-test/cover-letter',
+        'resume-review': 'https://dependable-feedom.up.railway.app/webhook-test/resume-review'
+      };
+
+      document.getElementById('output').innerText = '⏳ Please wait...';
+
+      try {
+        const res = await fetch(urls[type], { method: 'POST' });
+        const text = await res.text();
+        document.getElementById('output').innerText = text;
+      } catch (err) {
+        document.getElementById('output').innerText = '❌ Failed to call automation';
+      }
+    }
+  </script>
+</body>
+</html>
