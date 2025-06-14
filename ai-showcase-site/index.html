@@ -1,38 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My AI Tools</title>
+  <meta charset="UTF-8" />
+  <title>AI Email Agent Demo</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 50px; }
-    button { padding: 12px 20px; font-size: 16px; margin: 10px; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px auto;
+      max-width: 600px;
+      text-align: center;
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+    #response {
+      margin-top: 24px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      white-space: pre-wrap;
+    }
   </style>
 </head>
 <body>
-  <h1>👋 Welcome to My AI Automations</h1>
-  <p>Click below to try them:</p>
+  <h1>🎯 Try My AI Email Agent</h1>
+  <p>This tool reads a customer email and writes a smart reply using AI trained on SBI Card policy.</p>
 
-  <button onclick="callAutomation('cover-letter')">Generate Cover Letter</button>
-  <button onclick="callAutomation('resume-review')">Resume Review</button>
+  <form id="emailForm">
+    <input type="text" id="subject" name="subject" placeholder="Email Subject" required />
+    <textarea id="body" name="body" placeholder="Paste the email body here..." rows="6" required></textarea>
+    <input type="text" id="from" name="from" placeholder="Your Name (optional)" />
+    <button type="submit">Generate Response</button>
+  </form>
 
-  <p id="output"></p>
+  <div id="response"></div>
 
   <script>
-    async function callAutomation(type) {
-      const urls = {
-        'cover-letter': 'https://dependable-feedom.up.railway.app/webhook-test/cover-letter',
-        'resume-review': 'https://dependable-feedom.up.railway.app/webhook-test/resume-review'
-      };
+    const form = document.getElementById('emailForm');
+    const responseBox = document.getElementById('response');
 
-      document.getElementById('output').innerText = '⏳ Please wait...';
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const subject = document.getElementById('subject').value;
+      const body = document.getElementById('body').value;
+      const from = document.getElementById('from').value;
+
+      responseBox.innerHTML = "⏳ Generating response...";
 
       try {
-        const res = await fetch(urls[type], { method: 'POST' });
-        const text = await res.text();
-        document.getElementById('output').innerText = text;
+        const res = await fetch('https://dependable-feedom.up.railway.app/webhook-test/fake-email-agent', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ subject, body, from })
+        });
+
+        const result = await res.json();
+        responseBox.innerHTML = `<strong>📝 AI Response:</strong><br><br>${result.response}`;
       } catch (err) {
-        document.getElementById('output').innerText = '❌ Failed to call automation';
+        responseBox.innerHTML = "❌ Error: Unable to reach the AI service.";
+        console.error(err);
       }
-    }
+    });
   </script>
 </body>
 </html>
