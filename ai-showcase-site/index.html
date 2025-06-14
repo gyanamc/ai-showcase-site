@@ -7,7 +7,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0c0f15;
+      background-color: #0b1f4d; /* royal blue */
       color: white;
       display: flex;
       flex-direction: column;
@@ -37,7 +37,7 @@
 
     .header-text p {
       font-size: 14px;
-      color: #aaa;
+      color: #ccc;
     }
 
     .grid {
@@ -49,25 +49,34 @@
     }
 
     .tile {
-      background-color: #1a1f2e;
+      background-color: #132e65;
       padding: 20px;
       border-radius: 12px;
       text-align: center;
       text-decoration: none;
       color: white;
       transition: transform 0.2s, background 0.3s;
-      font-weight: bold;
-      font-size: 16px;
     }
 
     .tile:hover {
       transform: translateY(-4px);
-      background-color: #4CAF50;
+      background-color: #3760e8;
     }
 
     .tile-icon {
-      font-size: 32px;
-      margin-bottom: 10px;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .tile-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .tile-desc {
+      font-size: 13px;
+      color: #ccc;
     }
   </style>
 </head>
@@ -85,47 +94,56 @@
   <div class="grid">
     <a class="tile" href="generate-agent-prompt.html">
       <div class="tile-icon">💡</div>
-      Generate Agent's Prompt
+      <div class="tile-title">Agent Prompt</div>
+      <div class="tile-desc">Create structured prompts for custom AI agents.</div>
     </a>
 
     <a class="tile" href="product-video.html">
       <div class="tile-icon">🎥</div>
-      Videography of Your Product from Image
+      <div class="tile-title">VideoGen</div>
+      <div class="tile-desc">Turn product images into marketing videos.</div>
     </a>
 
     <a class="tile" href="ocr-mistral.html">
       <div class="tile-icon">📄</div>
-      Extract Text from Image (Mistral OCR)
+      <div class="tile-title">OCR</div>
+      <div class="tile-desc">Extract text from any image using Mistral + AI.</div>
     </a>
 
     <a class="tile" href="third-person-pov.html">
       <div class="tile-icon">🎬</div>
-      Third Person POV – Movie Star Walking
+      <div class="tile-title">3rd POV</div>
+      <div class="tile-desc">Generate videos from a third-person movie angle.</div>
     </a>
 
     <a class="tile" href="first-person-pov.html">
       <div class="tile-icon">👁️</div>
-      First Person POV Video Generation
+      <div class="tile-title">1st POV</div>
+      <div class="tile-desc">Create immersive first-person perspective videos.</div>
     </a>
 
     <a class="tile" href="email-agent.html">
       <div class="tile-icon">📨</div>
-      Email Bot Workflow
+      <div class="tile-title">Email Bot</div>
+      <div class="tile-desc">Respond to emails using support policy-trained AI.</div>
     </a>
 
     <a class="tile" href="ama-bot.html">
       <div class="tile-icon">💬</div>
-      AMA Bot
+      <div class="tile-title">AMA Bot</div>
+      <div class="tile-desc">Let users ask questions to a topic-trained bot.</div>
     </a>
 
     <a class="tile" href="cv-screening.html">
       <div class="tile-icon">📋</div>
-      Candidate CV Screening
+      <div class="tile-title">CV Screen</div>
+      <div class="tile-desc">Match resumes against job descriptions with LLMs.</div>
     </a>
 
-    <div class="tile" style="background-color: #333;">
+    <div class="tile" style="background-color: #2e3d63;">
       <div class="tile-icon">➕</div>
-      More coming soon...
+      <div class="tile-title">More Soon</div>
+      <div class="tile-desc">Upcoming tools and innovations in GenAI.</div>
     </div>
   </div>
 </body>
