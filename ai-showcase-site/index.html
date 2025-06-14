@@ -5,25 +5,45 @@
   <title>AI Email Agent Demo by Kumar Gyanam</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
+      background-image: url('banner-bg.png'); /* Your banner */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       font-family: Arial, sans-serif;
-      margin: 40px auto;
-      max-width: 600px;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 40px 20px;
+      color: white;
       text-align: center;
     }
-    h1 {
-      margin-bottom: 10px;
+
+    form {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+      color: #000;
     }
-    .subtitle {
-      color: #666;
-      font-size: 16px;
-      margin-bottom: 30px;
-    }
+
     input, textarea {
       width: 100%;
       margin-bottom: 12px;
       padding: 10px;
       font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }
+
     button {
       padding: 12px 24px;
       font-size: 16px;
@@ -31,39 +51,43 @@
       background-color: #4CAF50;
       color: white;
       border: none;
+      border-radius: 4px;
     }
+
     #response {
-      margin-top: 24px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f0f0f0;
+      color: #000;
+      border-radius: 6px;
       white-space: pre-wrap;
     }
+
     footer {
-      margin-top: 40px;
+      margin-top: 30px;
       font-size: 14px;
-      color: #888;
+      color: #bbb;
     }
   </style>
 </head>
 <body>
-  <h1>🎯 AI Email Agent Demo</h1>
-  <div class="subtitle">by <strong>Kumar Gyanam</strong> – Showcasing AI Automation in Action</div>
+  <div class="overlay">
+    <h1>🎯 Try My AI Email Agent</h1>
+    <p>This tool reads a customer email and writes a smart reply using AI trained on SBI Card policy.</p>
 
-  <p>This tool reads a customer email and writes a smart reply using AI trained on SBI Card policy.</p>
+    <form id="emailForm">
+      <input type="text" id="subject" name="subject" placeholder="Email Subject" required />
+      <textarea id="body" name="body" placeholder="Paste the email body here..." rows="6" required></textarea>
+      <input type="text" id="from" name="from" placeholder="Your Name (optional)" />
+      <button type="submit">Generate Response</button>
+    </form>
 
-  <form id="emailForm">
-    <input type="text" id="subject" name="subject" placeholder="Email Subject" required />
-    <textarea id="body" name="body" placeholder="Paste the email body here..." rows="6" required></textarea>
-    <input type="text" id="from" name="from" placeholder="Your Name (optional)" />
-    <button type="submit">Generate Response</button>
-  </form>
+    <div id="response"></div>
 
-  <div id="response"></div>
-
-  <footer>
-    Built with ❤️ by Kumar Gyanam | Powered by n8n + GPT + Pinecone
-  </footer>
+    <footer>
+      Built by <strong>Kumar Gyanam</strong> | AI Strategy & Automation | Powered by n8n + GPT
+    </footer>
+  </div>
 
   <script>
     const form = document.getElementById('emailForm');
@@ -81,9 +105,7 @@
       try {
         const res = await fetch('https://dependable-feedom.up.railway.app/webhook-test/fake-email-agent', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ subject, body, from })
         });
 
@@ -91,7 +113,6 @@
         responseBox.innerHTML = `<strong>📝 AI Response:</strong><br><br>${result.response}`;
       } catch (err) {
         responseBox.innerHTML = "❌ Error: Unable to reach the AI service.";
-        console.error(err);
       }
     });
   </script>
