@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agent Prompt Builder – Kumar Gyanam</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0b1f4d;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p.description {
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+      color: #ccc;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 20px;
+      outline: none;
+    }
+
+    button {
+      background: linear-gradient(90deg, #00c9ff, #92fe9d);
+      border: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      color: #000;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    #result {
+      margin-top: 30px;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      font-size: 15px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Build Great Prompts for Your Agent</h1>
+
+  <p class="description">
+    A powerful AI Agent is only as good as its prompt. Crafting the perfect instruction set is tricky, even for experts. This smart prompt builder will talk with you, ask relevant questions, and then craft an optimized prompt tailored for what you're trying to build.  
+    <strong>Let’s make your agent think like you do. Try it below.</strong>
+  </p>
+
+  <form id="promptForm">
+    <input
+      type="text"
+      id="userIdea"
+      placeholder="Start by telling what you want to build — e.g. 'I want to build a workflow to reply to customer emails…'"
+      required
+    />
+    <button type="submit">⚡ Build My Prompt</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById('promptForm');
+    const resultBox = document.getElementById('result');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const idea = document.getElementById('userIdea').value;
+      resultBox.innerHTML = "⏳ Thinking... building your prompt...";
+
+      try {
+        const res = await fetch('https://YOUR_WEBHOOK_URL_HERE', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ idea })
+        });
+
+        const result = await res.json();
+        resultBox.innerHTML = `<strong>🔧 Here’s your custom prompt:</strong><br><br>${result.response}`;
+      } catch (err) {
+        resultBox.innerHTML = "❌ Oops! Something went wrong.";
+      }
+    });
+  </script>
+
+</body>
+</html>
