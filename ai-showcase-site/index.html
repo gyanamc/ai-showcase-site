@@ -20,6 +20,8 @@
       align-items: center;
       gap: 20px;
       margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .header img {
@@ -33,11 +35,13 @@
     .header-text h1 {
       margin: 0;
       font-size: 28px;
+      text-align: center;
     }
 
     .header-text p {
       font-size: 14px;
       color: #ccc;
+      text-align: center;
     }
 
     .grid {
@@ -78,6 +82,28 @@
       font-size: 13px;
       color: #ccc;
     }
+
+    .logo-bar {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+      flex-wrap: wrap;
+    }
+
+    .logo-bar img {
+      height: 32px;
+      max-width: 80px;
+      object-fit: contain;
+      filter: brightness(90%);
+      transition: transform 0.2s ease;
+    }
+
+    .logo-bar img:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -95,56 +121,64 @@
     <a class="tile" href="generate-agent-prompt.html">
       <div class="tile-icon">💡</div>
       <div class="tile-title">Agent Prompt</div>
-      <div class="tile-desc">Create structured prompts for custom AI agents.</div>
+      <div class="tile-desc">Create structured prompts for AI agents.</div>
     </a>
 
     <a class="tile" href="product-video.html">
       <div class="tile-icon">🎥</div>
       <div class="tile-title">VideoGen</div>
-      <div class="tile-desc">Turn product images into marketing videos.</div>
+      <div class="tile-desc">Turn images into product videos.</div>
     </a>
 
     <a class="tile" href="ocr-mistral.html">
       <div class="tile-icon">📄</div>
       <div class="tile-title">OCR</div>
-      <div class="tile-desc">Extract text from any image using Mistral + AI.</div>
+      <div class="tile-desc">Extract text from images using Mistral OCR.</div>
     </a>
 
     <a class="tile" href="third-person-pov.html">
       <div class="tile-icon">🎬</div>
       <div class="tile-title">3rd POV</div>
-      <div class="tile-desc">Generate videos from a third-person movie angle.</div>
+      <div class="tile-desc">Generate videos from a movie-style POV.</div>
     </a>
 
     <a class="tile" href="first-person-pov.html">
       <div class="tile-icon">👁️</div>
       <div class="tile-title">1st POV</div>
-      <div class="tile-desc">Create immersive first-person perspective videos.</div>
+      <div class="tile-desc">Create immersive first-person videos.</div>
     </a>
 
     <a class="tile" href="email-agent.html">
       <div class="tile-icon">📨</div>
       <div class="tile-title">Email Bot</div>
-      <div class="tile-desc">Respond to emails using support policy-trained AI.</div>
+      <div class="tile-desc">AI replies to support queries via email.</div>
     </a>
 
     <a class="tile" href="ama-bot.html">
       <div class="tile-icon">💬</div>
       <div class="tile-title">AMA Bot</div>
-      <div class="tile-desc">Let users ask questions to a topic-trained bot.</div>
+      <div class="tile-desc">Ask me anything–style chatbot experience.</div>
     </a>
 
     <a class="tile" href="cv-screening.html">
       <div class="tile-icon">📋</div>
       <div class="tile-title">CV Screen</div>
-      <div class="tile-desc">Match resumes against job descriptions with LLMs.</div>
+      <div class="tile-desc">Match resumes with job descriptions.</div>
     </a>
 
     <div class="tile" style="background-color: #2e3d63;">
       <div class="tile-icon">➕</div>
       <div class="tile-title">More Soon</div>
-      <div class="tile-desc">Upcoming tools and innovations in GenAI.</div>
+      <div class="tile-desc">New GenAI tools coming soon.</div>
     </div>
+  </div>
+
+  <!-- Logo Bar -->
+  <div class="logo-bar">
+    <img src="assets/n8n.png" alt="n8n" />
+    <img src="assets/openai.png" alt="OpenAI" />
+    <img src="assets/webhook.png" alt="Webhook" />
+    <img src="assets/pinecone.png" alt="Pinecone" />
   </div>
 </body>
 </html>
