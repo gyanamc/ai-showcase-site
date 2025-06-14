@@ -2,13 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AI Email Agent Demo</title>
+  <title>AI Email Agent Demo by Kumar Gyanam</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 40px auto;
       max-width: 600px;
       text-align: center;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 30px;
     }
     input, textarea {
       width: 100%;
@@ -31,10 +39,17 @@
       background-color: #f9f9f9;
       white-space: pre-wrap;
     }
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #888;
+    }
   </style>
 </head>
 <body>
-  <h1>🎯 Try My AI Email Agent</h1>
+  <h1>🎯 AI Email Agent Demo</h1>
+  <div class="subtitle">by <strong>Kumar Gyanam</strong> – Showcasing AI Automation in Action</div>
+
   <p>This tool reads a customer email and writes a smart reply using AI trained on SBI Card policy.</p>
 
   <form id="emailForm">
@@ -45,6 +60,10 @@
   </form>
 
   <div id="response"></div>
+
+  <footer>
+    Built with ❤️ by Kumar Gyanam | Powered by n8n + GPT + Pinecone
+  </footer>
 
   <script>
     const form = document.getElementById('emailForm');
