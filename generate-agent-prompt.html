@@ -106,16 +106,17 @@
       resultBox.innerHTML = "⏳ Thinking... building your prompt...";
 
       try {
-        const res = await fetch('https://YOUR_WEBHOOK_URL_HERE', {
+        const res = await fetch('https://primary-production-da3f.up.railway.app/webhook/30b0b7f8-d5df-459d-bcb7-a8fdd0594ce3', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ idea })
         });
 
         const result = await res.json();
-        resultBox.innerHTML = `<strong>🔧 Here’s your custom prompt:</strong><br><br>${result.response}`;
+        resultBox.innerHTML = `<strong>🔧 Here’s your custom prompt:</strong><br><br>${result.response || JSON.stringify(result)}`;
       } catch (err) {
         resultBox.innerHTML = "❌ Oops! Something went wrong.";
+        console.error(err);
       }
     });
   </script>
