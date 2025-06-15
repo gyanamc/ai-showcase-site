@@ -59,6 +59,7 @@
       text-align: center;
       text-decoration: none;
       color: white;
+      position: relative;
       transition: transform 0.2s, background 0.3s;
     }
 
@@ -85,13 +86,27 @@
 
     .featured-tile {
       background: linear-gradient(135deg, #2d6cdf, #1e90ff);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transform: scale(1.03);
+      border: 2px solid #ffffff33;
     }
 
     .featured-tile:hover {
-      transform: scale(1.05);
+      transform: scale(1.06);
       background-color: #1e90ff;
+    }
+
+    .ribbon {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ff4757;
+      color: white;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
     }
 
     .logo-bar {
@@ -128,12 +143,14 @@
 
   <div class="grid">
     <a class="tile featured-tile" href="ama-bot.html">
+      <div class="ribbon">🔥 Featured</div>
       <div class="tile-icon">💬</div>
       <div class="tile-title">AMA Bot</div>
       <div class="tile-desc">Ask ILA anything – smart SBI Card advisor.</div>
     </a>
 
     <a class="tile featured-tile" href="generate-agent-prompt.html">
+      <div class="ribbon">🚀 Highlight</div>
       <div class="tile-icon">💡</div>
       <div class="tile-title">Prompt Agent</div>
       <div class="tile-desc">Craft perfect prompts with AI guidance.</div>
