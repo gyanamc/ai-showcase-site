@@ -120,7 +120,9 @@
         });
 
         const data = await response.json();
-        const output = (data.output || data.response || JSON.stringify(data)).replace(/\n/g, "<br>");
+        const raw = data.output || data.response || JSON.stringify(data);
+        const output = String(raw).replace(/\n/g, "<br>");
+
         removeTyping();
         appendMessage(output, 'bot');
       } catch (err) {
