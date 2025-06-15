@@ -7,7 +7,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0b1f4d; /* royal blue */
+      background-color: #0b1f4d;
       color: white;
       display: flex;
       flex-direction: column;
@@ -83,6 +83,17 @@
       color: #ccc;
     }
 
+    .featured-tile {
+      background: linear-gradient(135deg, #2d6cdf, #1e90ff);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transform: scale(1.02);
+    }
+
+    .featured-tile:hover {
+      transform: scale(1.05);
+      background-color: #1e90ff;
+    }
+
     .logo-bar {
       margin-top: 40px;
       display: flex;
@@ -107,7 +118,6 @@
   </style>
 </head>
 <body>
-  <!-- Header with Profile -->
   <div class="header">
     <img src="kumar-gyanam.jpeg" alt="Kumar Gyanam" />
     <div class="header-text">
@@ -116,12 +126,17 @@
     </div>
   </div>
 
-  <!-- Tool Grid -->
   <div class="grid">
-    <a class="tile" href="generate-agent-prompt.html">
+    <a class="tile featured-tile" href="ama-bot.html">
+      <div class="tile-icon">💬</div>
+      <div class="tile-title">AMA Bot</div>
+      <div class="tile-desc">Ask ILA anything – smart SBI Card advisor.</div>
+    </a>
+
+    <a class="tile featured-tile" href="generate-agent-prompt.html">
       <div class="tile-icon">💡</div>
-      <div class="tile-title">Agent Prompt</div>
-      <div class="tile-desc">Create structured prompts for AI agents.</div>
+      <div class="tile-title">Prompt Agent</div>
+      <div class="tile-desc">Craft perfect prompts with AI guidance.</div>
     </a>
 
     <a class="tile" href="product-video.html">
@@ -154,12 +169,6 @@
       <div class="tile-desc">AI replies to support queries via email.</div>
     </a>
 
-    <a class="tile" href="ama-bot.html">
-      <div class="tile-icon">💬</div>
-      <div class="tile-title">AMA Bot</div>
-      <div class="tile-desc">Ask me anything–style chatbot experience.</div>
-    </a>
-
     <a class="tile" href="cv-screening.html">
       <div class="tile-icon">📋</div>
       <div class="tile-title">CV Screen</div>
@@ -173,7 +182,6 @@
     </div>
   </div>
 
-  <!-- Logo Bar -->
   <div class="logo-bar">
     <img src="assets/n8n.png" alt="n8n" />
     <img src="assets/openai.png" alt="OpenAI" />
