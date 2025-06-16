@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>Kumar Gyanam – AI Automation Hub</title>
-  <meta name="description" content="Explore GenAI tools built by Kumar Gyanam — AMA Bot, Prompt Builders, OCR, CV Screeners and more.">
-  <meta property="og:image" content="assets/kumar-gyanam.jpeg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top left, #0b1f4d, #091a35);
+      background-color: #0b1f4d;
       color: white;
       display: flex;
       flex-direction: column;
@@ -47,28 +46,13 @@
       text-align: center;
     }
 
-    .cta-banner {
-      margin: 20px 0;
-      background: #1e90ff;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-    }
-    .cta-banner a {
-      color: #fff;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
       width: 100%;
       max-width: 1000px;
+      padding: 10px;
     }
 
     .tile {
@@ -79,12 +63,23 @@
       text-decoration: none;
       color: white;
       position: relative;
-      transition: all 0.25s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, background 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
     }
 
+    .tile:nth-child(1) { animation-delay: 0.1s; }
+    .tile:nth-child(2) { animation-delay: 0.2s; }
+    .tile:nth-child(3) { animation-delay: 0.3s; }
+    .tile:nth-child(4) { animation-delay: 0.4s; }
+    .tile:nth-child(5) { animation-delay: 0.5s; }
+    .tile:nth-child(6) { animation-delay: 0.6s; }
+    .tile:nth-child(7) { animation-delay: 0.7s; }
+    .tile:nth-child(8) { animation-delay: 0.8s; }
+
     .tile:hover {
-      transform: translateY(-6px) scale(1.02);
+      transform: translateY(-6px);
       background-color: #3760e8;
     }
 
@@ -129,59 +124,55 @@
       box-shadow: 0 0 8px rgba(0,0,0,0.3);
     }
 
-    .logo-bar {
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo-bar-container {
+      overflow: hidden;
+      width: 100%;
       margin-top: 40px;
+    }
+
+    .logo-bar {
       display: flex;
-      gap: 20px;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.8;
-      flex-wrap: wrap;
+      gap: 40px;
+      animation: scroll 20s linear infinite;
+      width: fit-content;
     }
 
     .logo-bar img {
       height: 32px;
       max-width: 80px;
       object-fit: contain;
-      filter: grayscale(100%) brightness(90%);
-      transition: transform 0.2s ease, filter 0.2s ease;
+      filter: brightness(90%);
     }
 
-    .logo-bar img:hover {
-      transform: scale(1.1);
-      filter: grayscale(0%) brightness(100%);
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
 
-    footer {
-      margin-top: 40px;
-      font-size: 12px;
-      color: #ccc;
-      text-align: center;
-    }
-    footer a {
-      color: #ccc;
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      body { padding: 20px 10px; }
-      .tile { padding: 16px; font-size: 15px; }
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .tile {
+        margin-bottom: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">
-      <img src="kumar-gyanam.jpeg" alt="Kumar Gyanam" />
-    </a>
+    <img src="kumar-gyanam.jpeg" alt="Kumar Gyanam" />
     <div class="header-text">
       <h1>WELCOME TO AI AUTOMATION HUB</h1>
       <p>Built by <strong>Kumar Gyanam</strong> – Architecting GenAI & Automation</p>
     </div>
-  </div>
-
-  <div class="cta-banner">
-    🔍 Explore tools I’ve built and let’s connect → <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">LinkedIn</a>
   </div>
 
   <div class="grid">
@@ -242,15 +233,15 @@
     </div>
   </div>
 
-  <div class="logo-bar">
-    <img src="assets/n8n.png" alt="n8n" />
-    <img src="assets/openai.png" alt="OpenAI" />
-    <img src="assets/webhook.png" alt="Webhook" />
-    <img src="assets/pinecone.png" alt="Pinecone" />
+  <div class="logo-bar-container">
+    <div class="logo-bar">
+      <img src="assets/n8n.png" alt="n8n" />
+      <img src="assets/openai.png" alt="OpenAI" />
+      <img src="assets/webhook.png" alt="Webhook" />
+      <img src="assets/pinecone.png" alt="Pinecone" />
+      <img src="assets/n8n.png" alt="n8n" />
+      <img src="assets/openai.png" alt="OpenAI" />
+    </div>
   </div>
-
-  <footer>
-    <p>© 2025 Kumar Gyanam | <a href="mailto:gyanamc@gmail.com">Contact</a></p>
-  </footer>
 </body>
 </html>
