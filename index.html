@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <title>Kumar Gyanam – AI Automation Hub</title>
-  <link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+  <meta name="description" content="Explore GenAI tools built by Kumar Gyanam — AMA Bot, Prompt Builders, OCR, CV Screeners and more.">
+  <meta property="og:image" content="assets/kumar-gyanam.jpeg" />
+  <link rel="icon" href="assets/favicon.png" type="image/png">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0b1f4d;
+      background: radial-gradient(circle at top left, #0b1f4d, #091a35);
       color: white;
       display: flex;
       flex-direction: column;
@@ -45,6 +47,22 @@
       text-align: center;
     }
 
+    .cta-banner {
+      margin: 20px 0;
+      background: #1e90ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+    .cta-banner a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -61,11 +79,12 @@
       text-decoration: none;
       color: white;
       position: relative;
-      transition: transform 0.2s, background 0.3s;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     .tile:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px) scale(1.02);
       background-color: #3760e8;
     }
 
@@ -124,22 +143,45 @@
       height: 32px;
       max-width: 80px;
       object-fit: contain;
-      filter: brightness(90%);
-      transition: transform 0.2s ease;
+      filter: grayscale(100%) brightness(90%);
+      transition: transform 0.2s ease, filter 0.2s ease;
     }
 
     .logo-bar img:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
+      filter: grayscale(0%) brightness(100%);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #ccc;
+      text-align: center;
+    }
+    footer a {
+      color: #ccc;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 20px 10px; }
+      .tile { padding: 16px; font-size: 15px; }
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <img src="kumar-gyanam.jpeg" alt="Kumar Gyanam" />
+    <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">
+      <img src="kumar-gyanam.jpeg" alt="Kumar Gyanam" />
+    </a>
     <div class="header-text">
       <h1>WELCOME TO AI AUTOMATION HUB</h1>
       <p>Built by <strong>Kumar Gyanam</strong> – Architecting GenAI & Automation</p>
     </div>
+  </div>
+
+  <div class="cta-banner">
+    🔍 Explore tools I’ve built and let’s connect → <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">LinkedIn</a>
   </div>
 
   <div class="grid">
@@ -206,5 +248,9 @@
     <img src="assets/webhook.png" alt="Webhook" />
     <img src="assets/pinecone.png" alt="Pinecone" />
   </div>
+
+  <footer>
+    <p>© 2025 Kumar Gyanam | <a href="mailto:gyanamc@gmail.com">Contact</a></p>
+  </footer>
 </body>
 </html>
