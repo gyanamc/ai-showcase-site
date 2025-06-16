@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>Kumar Gyanam – AI Automation Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <style>
     body {
@@ -52,7 +51,6 @@
       gap: 20px;
       width: 100%;
       max-width: 1000px;
-      padding: 10px;
     }
 
     .tile {
@@ -63,23 +61,11 @@
       text-decoration: none;
       color: white;
       position: relative;
-      transition: transform 0.3s ease, background 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s forwards;
+      transition: transform 0.2s, background 0.3s;
     }
 
-    .tile:nth-child(1) { animation-delay: 0.1s; }
-    .tile:nth-child(2) { animation-delay: 0.2s; }
-    .tile:nth-child(3) { animation-delay: 0.3s; }
-    .tile:nth-child(4) { animation-delay: 0.4s; }
-    .tile:nth-child(5) { animation-delay: 0.5s; }
-    .tile:nth-child(6) { animation-delay: 0.6s; }
-    .tile:nth-child(7) { animation-delay: 0.7s; }
-    .tile:nth-child(8) { animation-delay: 0.8s; }
-
     .tile:hover {
-      transform: translateY(-6px);
+      transform: translateY(-4px);
       background-color: #3760e8;
     }
 
@@ -124,24 +110,14 @@
       box-shadow: 0 0 8px rgba(0,0,0,0.3);
     }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .logo-bar-container {
-      overflow: hidden;
-      width: 100%;
-      margin-top: 40px;
-    }
-
     .logo-bar {
+      margin-top: 40px;
       display: flex;
-      gap: 40px;
-      animation: scroll 20s linear infinite;
-      width: fit-content;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+      flex-wrap: wrap;
     }
 
     .logo-bar img {
@@ -149,20 +125,28 @@
       max-width: 80px;
       object-fit: contain;
       filter: brightness(90%);
+      transition: transform 0.2s ease;
     }
 
-    @keyframes scroll {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+    .logo-bar img:hover {
+      transform: scale(1.05);
     }
 
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      .tile {
-        margin-bottom: 20px;
-      }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .footer a {
+      color: #4CAF50;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -233,15 +217,18 @@
     </div>
   </div>
 
-  <div class="logo-bar-container">
-    <div class="logo-bar">
-      <img src="assets/n8n.png" alt="n8n" />
-      <img src="assets/openai.png" alt="OpenAI" />
-      <img src="assets/webhook.png" alt="Webhook" />
-      <img src="assets/pinecone.png" alt="Pinecone" />
-      <img src="assets/n8n.png" alt="n8n" />
-      <img src="assets/openai.png" alt="OpenAI" />
-    </div>
+  <div class="logo-bar">
+    <img src="assets/n8n.png" alt="n8n" />
+    <img src="assets/openai.png" alt="OpenAI" />
+    <img src="assets/webhook.png" alt="Webhook" />
+    <img src="assets/pinecone.png" alt="Pinecone" />
+  </div>
+
+  <div class="footer">
+    <p>
+      📧 <a href="mailto:gyanamc@gmail.com">gyanamc@gmail.com</a> |
+      🔗 <a href="https://www.linkedin.com/in/kumargyanam" target="_blank">LinkedIn</a>
+    </p>
   </div>
 </body>
 </html>
