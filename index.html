@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>Kumar Gyanam – AI Automation Hub</title>
-  <link rel="icon" href="assets/favicon.png" type="image/png">
   <style>
     body {
       margin: 0;
@@ -16,20 +15,22 @@
       padding: 40px 20px;
     }
 
-    .contact-header {
+    .contact-bar {
       position: absolute;
-      top: 10px;
+      top: 12px;
       right: 20px;
       font-size: 14px;
+      z-index: 1000;
     }
 
-    .contact-header a {
-      color: #4CAF50;
-      margin-left: 10px;
+    .contact-bar a {
+      color: #00ff99;
+      margin-left: 15px;
       text-decoration: none;
+      font-weight: bold;
     }
 
-    .contact-header a:hover {
+    .contact-bar a:hover {
       text-decoration: underline;
     }
 
@@ -148,31 +149,17 @@
     .logo-bar img:hover {
       transform: scale(1.05);
     }
-
-    .footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 14px;
-      color: #aaa;
-    }
-
-    .footer a {
-      color: #4CAF50;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
-  <div class="contact-header">
-    <a href="mailto:gyanamc@gmail.com">📧 Email</a>
-    <a href="https://www.linkedin.com/in/kumargyanam" target="_blank">🔗 LinkedIn</a>
+
+  <!-- Contact Info Bar -->
+  <div class="contact-bar">
+    <a href="mailto:gyanam.ai@gmail.com" target="_blank">📧 Email</a>
+    <a href="https://www.linkedin.com/in/kumargyanam/" target="_blank">🔗 LinkedIn</a>
   </div>
 
+  <!-- Header -->
   <div class="header">
     <img src="kumar-gyanam.jpeg" alt="Kumar Gyanam" />
     <div class="header-text">
@@ -181,4 +168,72 @@
     </div>
   </div>
 
-  <!-- rest of the content remains unchanged -->
+  <!-- Tool Grid -->
+  <div class="grid">
+    <a class="tile featured-tile" href="ama-bot.html">
+      <div class="ribbon">🔥 Featured</div>
+      <div class="tile-icon">💬</div>
+      <div class="tile-title">AMA Bot</div>
+      <div class="tile-desc">Ask ILA anything – smart SBI Card advisor.</div>
+    </a>
+
+    <a class="tile featured-tile" href="generate-agent-prompt.html">
+      <div class="ribbon">🚀 Highlight</div>
+      <div class="tile-icon">💡</div>
+      <div class="tile-title">Prompt Agent</div>
+      <div class="tile-desc">Craft perfect prompts with AI guidance.</div>
+    </a>
+
+    <a class="tile" href="product-video.html">
+      <div class="tile-icon">🎥</div>
+      <div class="tile-title">VideoGen</div>
+      <div class="tile-desc">Turn images into product videos.</div>
+    </a>
+
+    <a class="tile" href="ocr-mistral.html">
+      <div class="tile-icon">📄</div>
+      <div class="tile-title">OCR</div>
+      <div class="tile-desc">Extract text from images using Mistral OCR.</div>
+    </a>
+
+    <a class="tile" href="third-person-pov.html">
+      <div class="tile-icon">🎬</div>
+      <div class="tile-title">3rd POV</div>
+      <div class="tile-desc">Generate videos from a movie-style POV.</div>
+    </a>
+
+    <a class="tile" href="first-person-pov.html">
+      <div class="tile-icon">👁️</div>
+      <div class="tile-title">1st POV</div>
+      <div class="tile-desc">Create immersive first-person videos.</div>
+    </a>
+
+    <a class="tile" href="email-agent.html">
+      <div class="tile-icon">📨</div>
+      <div class="tile-title">Email Bot</div>
+      <div class="tile-desc">AI replies to support queries via email.</div>
+    </a>
+
+    <a class="tile" href="cv-screening.html">
+      <div class="tile-icon">📋</div>
+      <div class="tile-title">CV Screen</div>
+      <div class="tile-desc">Match resumes with job descriptions.</div>
+    </a>
+
+    <div class="tile" style="background-color: #2e3d63;">
+      <div class="tile-icon">➕</div>
+      <div class="tile-title">More Soon</div>
+      <div class="tile-desc">New GenAI tools coming soon.</div>
+    </div>
+  </div>
+
+  <!-- Logo Bar -->
+  <div class="logo-bar">
+    <img src="assets/n8n.png" alt="n8n" />
+    <img src="assets/openai.png" alt="OpenAI" />
+    <img src="assets/webhook.png" alt="Webhook" />
+    <img src="assets/pinecone.png" alt="Pinecone" />
+  </div>
+
+</body>
+</html>
