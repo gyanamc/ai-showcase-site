@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kumar Gyanam – AI Automation Hub</title>
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <style>
@@ -18,21 +19,15 @@
 
     .contact-bar {
       position: absolute;
-      top: 12px;
+      top: 10px;
       right: 20px;
       font-size: 14px;
-      z-index: 1000;
     }
 
     .contact-bar a {
-      color: #00ff99;
-      margin-left: 15px;
+      color: #00ffcc;
       text-decoration: none;
-      font-weight: bold;
-    }
-
-    .contact-bar a:hover {
-      text-decoration: underline;
+      margin-left: 15px;
     }
 
     .header {
@@ -132,16 +127,18 @@
     .logo-bar {
       margin-top: 40px;
       display: flex;
-      gap: 20px;
+      gap: 16px;
       align-items: center;
       justify-content: center;
-      opacity: 0.8;
+      opacity: 0.85;
       flex-wrap: wrap;
     }
 
     .logo-bar img {
-      height: 32px;
-      max-width: 80px;
+      height: auto;
+      max-height: 28px;
+      max-width: 60px;
+      margin: 8px;
       object-fit: contain;
       filter: brightness(90%);
       transition: transform 0.2s ease;
@@ -150,17 +147,40 @@
     .logo-bar img:hover {
       transform: scale(1.05);
     }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tile {
+        margin-bottom: 16px;
+      }
+
+      .logo-bar {
+        margin-top: 60px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .logo-bar img {
+        max-width: 60px;
+        max-height: 30px;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="contact-bar">
+    <a href="mailto:gyanamc@gmail.com">📧 Email</a>
+    <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">🔗 LinkedIn</a>
+  </div>
 
-  <!-- Contact Info Bar -->
-<div class="contact-bar">
-  <a href="mailto:gyanamc@gmail.com" target="_blank">📧 Email</a>
-  <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">🔗 LinkedIn</a>
-</div>
-
-  <!-- Header -->
   <div class="header">
     <img src="kumar-gyanam.jpeg" alt="Kumar Gyanam" />
     <div class="header-text">
@@ -169,7 +189,6 @@
     </div>
   </div>
 
-  <!-- Tool Grid -->
   <div class="grid">
     <a class="tile featured-tile" href="ama-bot.html">
       <div class="ribbon">🔥 Featured</div>
@@ -228,13 +247,11 @@
     </div>
   </div>
 
-  <!-- Logo Bar -->
   <div class="logo-bar">
     <img src="assets/n8n.png" alt="n8n" />
     <img src="assets/openai.png" alt="OpenAI" />
     <img src="assets/webhook.png" alt="Webhook" />
     <img src="assets/pinecone.png" alt="Pinecone" />
   </div>
-
 </body>
 </html>
