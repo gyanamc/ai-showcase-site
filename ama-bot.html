@@ -2,31 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ask ILA – SBI Card Assistant</title>
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #0b1f4d;
       color: white;
-      font-family: 'Segoe UI', sans-serif;
-      padding: 20px;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 10px;
+      margin: 16px 12px 8px;
+      font-size: 1.2rem;
+    }
+
+    .chat-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 700px;
+      margin: 0 auto;
+      width: 100%;
     }
 
     .chat-container {
-      max-width: 700px;
-      margin: 0 auto;
+      flex: 1;
       background-color: #132e65;
       border-radius: 12px;
-      padding: 20px;
-      min-height: 400px;
+      padding: 12px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      overflow-y: auto;
+      gap: 10px;
+      margin: 0 12px;
     }
 
     .message {
@@ -36,6 +53,7 @@
       white-space: pre-wrap;
       word-wrap: break-word;
       max-width: 90%;
+      animation: fadeIn 0.3s ease-in;
     }
 
     .user {
@@ -51,8 +69,9 @@
 
     form {
       display: flex;
-      justify-content: center;
-      margin-top: 20px;
+      padding: 10px;
+      margin: 0 12px 12px;
+      gap: 8px;
     }
 
     input {
@@ -61,7 +80,6 @@
       border-radius: 30px;
       border: none;
       font-size: 16px;
-      margin-right: 10px;
       outline: none;
     }
 
@@ -80,23 +98,29 @@
     button:hover {
       transform: scale(1.05);
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
-
   <h1>🤖 Ask ILA – Your SBI Card Recommendation Assistant</h1>
 
-  <div class="chat-container" id="chatBox">
-    <div class="message bot">
-      Hi there! 👋 I’m <strong>ILA</strong>, your smart SBI Card assistant.<br><br>
-      Ask me anything — from choosing the best credit card for travel, cashback, or lifestyle, to understanding features or benefits.
+  <div class="chat-wrapper">
+    <div class="chat-container" id="chatBox">
+      <div class="message bot">
+        Hi there! 👋 I’m <strong>ILA</strong>, your smart SBI Card assistant.<br><br>
+        Ask me anything — from choosing the best credit card for travel, cashback, or lifestyle, to understanding features or benefits.
+      </div>
     </div>
-  </div>
 
-  <form id="chatForm">
-    <input type="text" id="chatInput" placeholder="Ask ILA anything..." required />
-    <button type="submit">Send ➤</button>
-  </form>
+    <form id="chatForm">
+      <input type="text" id="chatInput" placeholder="Ask ILA anything..." required />
+      <button type="submit">Send ➤</button>
+    </form>
+  </div>
 
   <script>
     const chatBox = document.getElementById('chatBox');
@@ -146,6 +170,5 @@
       if (typingMsg) typingMsg.remove();
     }
   </script>
-
 </body>
 </html>
