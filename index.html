@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kumar Gyanam – AI Automation Hub</title>
-  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="icon" href="assets/favicon.png" type="image/png">
   <style>
     body {
       margin: 0;
@@ -15,184 +15,184 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
-    /* Sticky header */
-    header {
-      position: sticky;
-      top: 0;
-      background: #132e65;
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 24px;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      padding: 15px 30px;
+      background-color: #092148;
     }
-
-    header h1 {
-      margin: 0;
+    .navbar .brand {
+      font-weight: bold;
       font-size: 18px;
-      color: #00ffff;
+      color: #4CAF50;
     }
-
-    header nav a {
-      color: #ccc;
+    .navbar .links a {
+      color: #00e7ff;
+      margin-left: 20px;
       text-decoration: none;
-      margin-left: 16px;
       font-size: 14px;
     }
-
-    header nav a:hover {
-      color: #00ffff;
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
     }
-
-    /* Grid of tools */
+    .header img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #4CAF50;
+      margin-bottom: 15px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .header p {
+      color: #ccc;
+      font-size: 14px;
+    }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      width: 90%;
-      max-width: 1100px;
-      margin: 30px auto;
+      padding: 20px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-
     .tile {
       background-color: #132e65;
       padding: 20px;
       border-radius: 12px;
       text-align: center;
+      transition: transform 0.2s, background 0.3s;
       text-decoration: none;
       color: white;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      animation: fadeInUp 0.8s forwards;
     }
-
-    .tile:nth-child(1) { animation-delay: 0.1s; }
-    .tile:nth-child(2) { animation-delay: 0.2s; }
-    .tile:nth-child(3) { animation-delay: 0.3s; }
-    .tile:nth-child(4) { animation-delay: 0.4s; }
-    .tile:nth-child(5) { animation-delay: 0.5s; }
-    .tile:nth-child(6) { animation-delay: 0.6s; }
-    .tile:nth-child(7) { animation-delay: 0.7s; }
-    .tile:nth-child(8) { animation-delay: 0.8s; }
-    .tile:nth-child(9) { animation-delay: 0.9s; }
-
     .tile:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-      background-color: #1d4fd1;
+      transform: translateY(-4px);
+      background-color: #3760e8;
     }
-
     .tile-icon {
       font-size: 28px;
       margin-bottom: 8px;
     }
-
     .tile-title {
       font-weight: bold;
       font-size: 16px;
       margin-bottom: 6px;
     }
-
     .tile-desc {
       font-size: 13px;
       color: #ccc;
     }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .logo-bar {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 40px 0;
     }
-
-    /* Footer */
-    footer {
+    .logo-bar img {
+      height: 32px;
+      filter: brightness(90%);
+      transition: transform 0.2s ease;
+    }
+    .logo-bar img:hover {
+      transform: scale(1.05);
+    }
+    .footer {
       margin-top: auto;
-      background: #132e65;
+      background: #092148;
+      padding: 15px;
       text-align: center;
-      padding: 20px;
-      font-size: 14px;
+      font-size: 12px;
       color: #ccc;
     }
-
-    footer a {
-      color: #00ffff;
+    .footer a {
+      color: #00e7ff;
       text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+      margin: 0 5px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Kumar Gyanam – AI Hub</h1>
-    <nav>
+  <div class="navbar">
+    <div class="brand">Kumar Gyanam – AI Hub</div>
+    <div class="links">
       <a href="mailto:gyanamc@gmail.com">Email</a>
       <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">LinkedIn</a>
-    </nav>
-  </header>
+    </div>
+  </div>
+
+  <div class="header">
+    <img src="kumar-gyanam.jpeg" alt="Kumar Gyanam" />
+    <h1>WELCOME TO AI AUTOMATION HUB</h1>
+    <p>Built by <strong>Kumar Gyanam</strong> – Architecting GenAI & Automation</p>
+  </div>
 
   <div class="grid">
     <a class="tile" href="ama-bot.html">
       <div class="tile-icon">💬</div>
       <div class="tile-title">AMA Bot</div>
-      <div class="tile-desc">Ask ILA – SBI Card recommendation bot</div>
+      <div class="tile-desc">Ask ILA – smart SBI Card recommendation bot.</div>
     </a>
-
     <a class="tile" href="generate-agent-prompt.html">
       <div class="tile-icon">💡</div>
       <div class="tile-title">Prompt Agent</div>
-      <div class="tile-desc">Craft perfect prompts with AI guidance</div>
+      <div class="tile-desc">Craft perfect prompts with AI guidance.</div>
     </a>
-
     <a class="tile" href="product-video.html">
       <div class="tile-icon">🎥</div>
       <div class="tile-title">VideoGen</div>
-      <div class="tile-desc">Turn images into product videos</div>
+      <div class="tile-desc">Turn images into product videos.</div>
     </a>
-
     <a class="tile" href="ocr-mistral.html">
       <div class="tile-icon">📄</div>
       <div class="tile-title">OCR</div>
-      <div class="tile-desc">Extract text from images using Mistral</div>
+      <div class="tile-desc">Extract text from images using Mistral OCR.</div>
     </a>
-
     <a class="tile" href="third-person-pov.html">
       <div class="tile-icon">🎬</div>
       <div class="tile-title">3rd POV</div>
-      <div class="tile-desc">Movie-style perspective videos</div>
+      <div class="tile-desc">Movie-style perspective videos.</div>
     </a>
-
     <a class="tile" href="first-person-pov.html">
       <div class="tile-icon">👁️</div>
       <div class="tile-title">1st POV</div>
-      <div class="tile-desc">Immersive first-person video demos</div>
+      <div class="tile-desc">Immersive first-person video demos.</div>
     </a>
-
     <a class="tile" href="email-agent.html">
       <div class="tile-icon">📨</div>
       <div class="tile-title">Email Bot</div>
-      <div class="tile-desc">Auto-reply to support emails</div>
+      <div class="tile-desc">Auto-reply to support emails.</div>
     </a>
-
     <a class="tile" href="cv-screening.html">
       <div class="tile-icon">📋</div>
       <div class="tile-title">CV Screen</div>
-      <div class="tile-desc">Match resumes with JDs</div>
+      <div class="tile-desc">Match resumes with JDs.</div>
     </a>
-
     <div class="tile" style="background-color: #2e3d63;">
       <div class="tile-icon">➕</div>
       <div class="tile-title">More Soon</div>
-      <div class="tile-desc">New GenAI tools on the way</div>
+      <div class="tile-desc">New GenAI tools on the way.</div>
     </div>
   </div>
 
-  <footer>
-    © 2025 Kumar Gyanam | <a href="mailto:gyanamc@gmail.com">gyanamc@gmail.com</a> |
-    <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">LinkedIn</a>
-  </footer>
+  <div class="logo-bar">
+    <img src="assets/n8n.png" alt="n8n" />
+    <img src="assets/openai.png" alt="OpenAI" />
+    <img src="assets/webhook.png" alt="Webhook" />
+    <img src="assets/pinecone.png" alt="Pinecone" />
+  </div>
+
+  <div class="footer">
+    © 2025 Kumar Gyanam | <a href="mailto:gyanamc@gmail.com">gyanamc@gmail.com</a> | <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">LinkedIn</a>
+  </div>
 </body>
 </html>
