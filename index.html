@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Kumar Gyanam – AI Automation Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <style>
     body {
@@ -16,26 +17,19 @@
       padding: 40px 20px;
     }
 
-    header {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background: transparent;
-    }
-
-    header .logo {
-      font-size: 18px;
-      font-weight: bold;
-      color: #4CAF50;
-    }
-
-    header .contact-links a {
-      color: #00ffff;
-      margin-left: 15px;
-      text-decoration: none;
+    .contact-bar {
+      position: absolute;
+      top: 15px;
+      right: 20px;
       font-size: 14px;
+    }
+    .contact-bar a {
+      color: #00e6e6;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+    .contact-bar a:hover {
+      text-decoration: underline;
     }
 
     .header {
@@ -107,6 +101,18 @@
       color: #ccc;
     }
 
+    .featured-tile {
+      background: linear-gradient(135deg, #2d6cdf, #1e90ff);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transform: scale(1.03);
+      border: 2px solid #ffffff33;
+    }
+
+    .featured-tile:hover {
+      transform: scale(1.06);
+      background-color: #1e90ff;
+    }
+
     .ribbon {
       position: absolute;
       top: -8px;
@@ -120,67 +126,45 @@
       box-shadow: 0 0 8px rgba(0,0,0,0.3);
     }
 
-    footer {
+    .logo-bar {
       margin-top: 40px;
-      font-size: 13px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
       opacity: 0.8;
+      flex-wrap: wrap;
     }
 
-    footer a {
-      color: #00ffff;
-      text-decoration: none;
-      margin-left: 5px;
+    .logo-bar img {
+      height: 32px;
+      max-width: 80px;
+      object-fit: contain;
+      filter: brightness(90%);
+      transition: transform 0.2s ease;
+    }
+
+    .logo-bar img:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 500px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-bar {
+        font-size: 12px;
+      }
     }
   </style>
 </head>
-  <div class="voice-button" onclick="window.open('voicebot.html', '_blank')">
-  🎤 Talk to ILAVoice
-</div>
-
-<style>
-.voice-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #4CAF50;
-  color: white;
-  padding: 12px 18px;
-  border-radius: 30px;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: all 0.3s;
-  z-index: 9999;
-}
-.voice-button:hover {
-  transform: scale(1.05);
-  background: #45a049;
-}
-</style>
-
 <body>
-  <script>
-  (function() {
-    var script = document.createElement('script');
-    script.src = "https://elevenlabs.io/app/embed/talk-to.js";
-    script.async = true;
-    script.onload = function() {
-      window.TalkTo.render({
-        agent_id: "agent_01jytxnqscetz995vm9sa5tg2g"
-      });
-    };
-    document.head.appendChild(script);
-  })();
-</script>
-
-  <header>
-  <div class="logo">Kumar Gyanam – AI Hub</div>
-  <div class="contact-links">
+  <div class="contact-bar">
     <a href="mailto:gyanamc@gmail.com">Email</a>
     <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">LinkedIn</a>
     <a href="blog.html">Blog</a>
   </div>
-  </header>
+
   <div class="header">
     <img src="kumar-gyanam.jpeg" alt="Kumar Gyanam" />
     <div class="header-text">
@@ -190,14 +174,14 @@
   </div>
 
   <div class="grid">
-    <a class="tile" href="ama-bot.html">
+    <a class="tile featured-tile" href="ama-bot.html">
       <div class="ribbon">🔥 Featured</div>
       <div class="tile-icon">💬</div>
       <div class="tile-title">AMA Bot</div>
-      <div class="tile-desc">Ask ILA – smart SBI Card recommendation bot.</div>
+      <div class="tile-desc">Ask ILA anything – smart SBI Card advisor.</div>
     </a>
 
-    <a class="tile" href="generate-agent-prompt.html">
+    <a class="tile featured-tile" href="generate-agent-prompt.html">
       <div class="ribbon">🚀 Highlight</div>
       <div class="tile-icon">💡</div>
       <div class="tile-title">Prompt Agent</div>
@@ -219,36 +203,54 @@
     <a class="tile" href="third-person-pov.html">
       <div class="tile-icon">🎬</div>
       <div class="tile-title">3rd POV</div>
-      <div class="tile-desc">Movie-style perspective videos.</div>
+      <div class="tile-desc">Generate videos from a movie-style POV.</div>
     </a>
 
     <a class="tile" href="first-person-pov.html">
       <div class="tile-icon">👁️</div>
       <div class="tile-title">1st POV</div>
-      <div class="tile-desc">Immersive first-person video demos.</div>
+      <div class="tile-desc">Create immersive first-person videos.</div>
     </a>
 
     <a class="tile" href="email-agent.html">
       <div class="tile-icon">📨</div>
       <div class="tile-title">Email Bot</div>
-      <div class="tile-desc">Auto-reply to support emails.</div>
+      <div class="tile-desc">AI replies to support queries via email.</div>
     </a>
 
     <a class="tile" href="cv-screening.html">
       <div class="tile-icon">📋</div>
       <div class="tile-title">CV Screen</div>
-      <div class="tile-desc">Match resumes with JDs.</div>
+      <div class="tile-desc">Match resumes with job descriptions.</div>
     </a>
 
     <div class="tile" style="background-color: #2e3d63;">
       <div class="tile-icon">➕</div>
       <div class="tile-title">More Soon</div>
-      <div class="tile-desc">New GenAI tools on the way</div>
+      <div class="tile-desc">New GenAI tools coming soon.</div>
     </div>
   </div>
 
-  <footer>
-    © 2025 Kumar Gyanam | <a href="mailto:gyanamc@gmail.com">gyanamc@gmail.com</a> | <a href="https://www.linkedin.com/in/kumar-gyanam/" target="_blank">LinkedIn</a>
-  </footer>
+  <div class="logo-bar" style="margin-top: 30px;">
+    <img src="assets/n8n.png" alt="n8n" />
+    <img src="assets/openai.png" alt="OpenAI" />
+    <img src="assets/webhook.png" alt="Webhook" />
+    <img src="assets/pinecone.png" alt="Pinecone" />
+  </div>
+
+  <!-- ILAVoice floating bot -->
+  <script>
+    (function() {
+      var script = document.createElement('script');
+      script.src = "https://elevenlabs.io/app/embed/talk-to.js";
+      script.async = true;
+      script.onload = function() {
+        window.TalkTo.render({
+          agent_id: "agent_01jytxnqscetz995vm9sa5tg2g"
+        });
+      };
+      document.head.appendChild(script);
+    })();
+  </script>
 </body>
 </html>
