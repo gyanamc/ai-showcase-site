@@ -159,6 +159,20 @@
 </style>
 
 <body>
+  <script>
+  (function() {
+    var script = document.createElement('script');
+    script.src = "https://elevenlabs.io/app/embed/talk-to.js";
+    script.async = true;
+    script.onload = function() {
+      window.TalkTo.render({
+        agent_id: "agent_01jytxnqscetz995vm9sa5tg2g"
+      });
+    };
+    document.head.appendChild(script);
+  })();
+</script>
+
   <header>
   <div class="logo">Kumar Gyanam – AI Hub</div>
   <div class="contact-links">
