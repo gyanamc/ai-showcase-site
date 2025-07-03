@@ -6,6 +6,107 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <style>
+  #voiceMic {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #4CAF50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 10000;
+}
+#voicePanel {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: #132e65;
+  border: 2px solid #4CAF50;
+  border-radius: 12px;
+  padding: 15px;
+  width: 260px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  z-index: 9999;
+}
+#voicePanel p {
+  font-size: 14px;
+  white-space: pre-line;
+  color: #fff;
+}
+#voicePanel button {
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#voicePanel button:disabled {
+  background: #777;
+}
+<div id="voiceMic">🎤</div>
+<div id="voicePanel">
+  <p id="botOutput">Click Speak to start...</p>
+  <button id="startVoiceBtn">Speak</button>
+</div>
+<script>
+const apiKey="YOUR_ELEVENLABS_API_KEY";
+const agentId="agent_01jytxnqscetz995vm9sa5tg2g";
+const mic=document.getElementById('voiceMic');
+const panel=document.getElementById('voicePanel');
+const botOutput=document.getElementById('botOutput');
+const startBtn=document.getElementById('startVoiceBtn');
+
+mic.onclick=()=>{ panel.style.display=panel.style.display==='block'?'none':'block'; };
+
+startBtn.onclick=()=>{
+startBtn.disabled=true;botOutput.innerText="Listening...";
+const rec=new(window.SpeechRecognition||window.webkitSpeechRecognition)();
+rec.lang="en-US";rec.start();
+rec.onresult=async(e)=>{
+const text=e.results[0][0].transcript;
+botOutput.innerText="You: "+text;
+const reply=await sendToAgent(text);
+botOutput.innerText+="\nILA: "+reply;
+await speak(reply);
+startBtn.disabled=false;
+};
+rec.onerror=(e)=>{console.error(e);botOutput.innerText="Voice error.";startBtn.disabled=false;}
+};
+
+async function sendToAgent(userText){
+try{
+const r=await fetch(`https://api.elevenlabs.io/v1/agents/${agentId}/query`,{
+method:"POST",
+headers:{"Content-Type":"application/json","xi-api-key":apiKey},
+body:JSON.stringify({query:userText})
+});
+const d=await r.json();
+return d.text||"No reply.";
+}catch(e){console.error(e);return"Agent error.";}
+}
+
+async function speak(txt){
+try{
+const r=await fetch("https://api.elevenlabs.io/v1/text-to-speech/YOUR_VOICE_ID/stream",{
+method:"POST",
+headers:{"Content-Type":"application/json","xi-api-key":apiKey},
+body:JSON.stringify({text:txt,voice_settings:{stability:0.5,similarity_boost:0.5}})
+});
+const b=await r.blob();const u=URL.createObjectURL(b);(new Audio(u)).play();
+}catch(e){console.error(e);botOutput.innerText+="\n(Audio error)";}
+}
+</script>
+
 body{margin:0;font-family:'Segoe UI',sans-serif;background:#0b1f4d;color:#fff;display:flex;flex-direction:column;align-items:center;padding:40px 20px}
 .contact-bar{position:absolute;top:15px;right:20px;font-size:14px}
 .contact-bar a{color:#00e6e6;text-decoration:none;margin-left:15px}
