@@ -229,7 +229,7 @@
     function sendToWebhook(transcript) {
       statusDiv.innerHTML = '<div class="status-text">🚀 Sending to server...</div>';
       const payload = JSON.stringify({ sessionId, transcript: transcript.trim() });
-      fetch('https://primary-production-da3f.up.railway.app/webhook/voice-assistant', {
+      fetch('https://primary-production-da3f.up.railway.app/webhook-test/voice-assistant', {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
         body: payload
