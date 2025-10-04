@@ -239,12 +239,30 @@
         return res.json();
       })
       .then(data => {
-        const responseText = data.reply || data.message || 'Sorry, no reply.';
-        statusDiv.innerHTML = `<div class="status-text">💬 ${responseText}</div>`;
-        if ('speechSynthesis' in window) {
-          const utter = new SpeechSynthesisUtterance(responseText);
-          utter.lang = 'en-IN';
-          speechSynthesis.speak(utter);
+        // If webhook sends mp3 URL (preferred)
+        if (data.audioUrl) {
+          const audio = new Audio(data.audioUrl);
+          audio.type = "audio/mpeg";
+          audio.play();
+          statusDiv.innerHTML = '<div class="status-text">🔊 Playing response...</div>';
+        }
+        // If webhook sends base64 encoded mp3
+        else if (data.audioBase64) {
+          const audioSrc = 'data:audio/mpeg;base64,' + data.audioBase64;
+          const audio = new Audio(audioSrc);
+          audio.play();
+          statusDiv.innerHTML = '<div class="status-text">🔊 Playing response...</div>';
+        }
+        // Fallback for text reply (if no audio)
+        else {
+          const responseText = data.reply || data.message || data.answer || 'Sorry, there is no reply.';
+          statusDiv.innerHTML = `<div class="status-text">💬 ${responseText}</div>`;
+          // Optionally, speak the text reply with SpeechSynthesis
+          if ('speechSynthesis' in window) {
+            const utter = new SpeechSynthesisUtterance(responseText);
+            utter.lang = 'en-IN';
+            speechSynthesis.speak(utter);
+          }
         }
         setTimeout(() => {
           statusDiv.innerHTML = '<div class="status-text">Ready to listen...</div>';
