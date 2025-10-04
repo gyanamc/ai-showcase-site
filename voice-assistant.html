@@ -48,7 +48,7 @@
                 <span class="mic-icon">🎤</span>
             </button>
             <div class="instruction">
-                Press and hold the microphone and ask anything about SBI Card or general questions like <strong>"[translate:Aaj ka din kaisa hai?]"</strong>
+                Press and hold the microphone and ask anything about SBI Card or general questions like <strong>[translate:Aaj ka din kaisa hai?]</strong>
             </div>
             <div class="status" id="status">
                 <div class="status-text">Ready to listen...</div>
@@ -58,7 +58,7 @@
             <h3>💡 Try asking:</h3>
             <div class="example-list">
                 <div class="example-item">"Which SBI Card is best for me?"</div>
-                <div class="example-item">"[translate:Aaj ka din kaisa hai?]"</div>
+                <div class="example-item">[translate:Aaj ka din kaisa hai?]</div>
                 <div class="example-item">"What are the benefits of SBI Card Prime?"</div>
                 <div class="example-item">"How do I apply for a credit card?"</div>
                 <div class="example-item">"Tell me about reward points"</div>
@@ -88,7 +88,9 @@
 
             recognition.onresult = event => {
                 let transcript = '';
-                for (let i = event.resultIndex; i < event.results.length; i++) transcript += event.results[i][0].transcript;
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+                }
                 if (event.results[event.resultIndex].isFinal) {
                     statusDiv.innerHTML = `<div class="status-text">🤔 You said: "${transcript}"</div>`;
                     sendToWebhook(transcript);
@@ -119,13 +121,18 @@
         micButton.addEventListener('touchstart',e => { e.preventDefault(); if (recognition && !isRecording) recognition.start(); });
         micButton.addEventListener('touchend',  e => { e.preventDefault(); if (recognition && isRecording) recognition.stop(); });
 
-        function resetMicButton() { isRecording = false; micButton.classList.remove('recording'); }
+        function resetMicButton() {
+            isRecording = false;
+            micButton.classList.remove('recording');
+        }
 
         function sendToWebhook(transcript) {
             statusDiv.innerHTML = '<div class="status-text">🚀 Sending to server...</div>';
+            const payload = JSON.stringify({ sessionId, transcript: transcript.trim() });
             fetch('https://primary-production-da3f.up.railway.app/webhook-test/voice-assistant', {
-                method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ sessionId, transcript: transcript.trim() })
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+                body: payload
             })
             .then(res => { if (!res.ok) throw new Error('Network response was not ok'); return res.json(); })
             .then(data => {
