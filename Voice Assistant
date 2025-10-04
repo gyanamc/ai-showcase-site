@@ -1,0 +1,9 @@
+<!-- Add this tile in your index.html grid, before the "More Soon" tile -->
+
+<div class="tool-card" onclick="window.location.href='voice-assistant.html'">
+    <div class="tool-icon">🎤</div>
+    <div class="tool-content">
+        <h3>Voice Assistant</h3>
+        <p>Press and hold to ask about SBI Card or anything.</p>
+    </div>
+</div>
