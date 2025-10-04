@@ -16,62 +16,36 @@
     }
     .header { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
     .back-btn {
-      color: #64ffda;
-      text-decoration: none;
-      font-size: 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.3s;
+      color: #64ffda; text-decoration: none; font-size: 16px;
+      display: inline-flex; align-items: center; gap: 8px; transition: color 0.3s;
     }
     .back-btn:hover { color: #fff; }
     .container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      text-align: center;
-      max-width: 800px;
-      margin: auto;
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 40px 20px; text-align: center;
+      max-width: 800px; margin: auto;
     }
     .title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
+      font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;
       background: linear-gradient(135deg, #64ffda, #bb86fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .subtitle {
-      font-size: 1.2rem;
-      color: #b0b0b0;
-      margin-bottom: 60px;
-      line-height: 1.6;
+      font-size: 1.2rem; color: #b0b0b0; margin-bottom: 60px; line-height: 1.6;
     }
     .voice-interface {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
+      display: flex; flex-direction: column; align-items: center; gap: 30px;
     }
     .mic-button {
-      width: 120px; height: 120px;
-      border-radius: 50%;
+      width: 120px; height: 120px; border-radius: 50%;
       background: linear-gradient(135deg, #64ffda, #bb86fc);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s;
-      position: relative;
+      border: none; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s; position: relative;
       box-shadow: 0 10px 30px rgba(100,255,218,0.3);
     }
     .mic-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 40px rgba(100,255,218,0.4);
+      transform: scale(1.05); box-shadow: 0 15px 40px rgba(100,255,218,0.4);
     }
     .mic-button:active { transform: scale(0.95); }
     .mic-button.recording {
@@ -85,44 +59,27 @@
     }
     .mic-icon { font-size: 3rem; color: #0f0f23; font-weight: bold; }
     .instruction {
-      font-size: 1.1rem;
-      color: #e0e0e0;
-      max-width: 500px;
-      line-height: 1.6;
+      font-size: 1.1rem; color: #e0e0e0; max-width: 500px; line-height: 1.6;
     }
     .status {
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height: 60px; display: flex; align-items: center; justify-content: center;
     }
     .status-text {
-      font-size: 1rem;
-      color: #64ffda;
-      font-weight: 500;
+      font-size: 1rem; color: #64ffda; font-weight: 500;
     }
     .examples {
-      margin-top: 40px;
-      padding: 30px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 16px;
+      margin-top: 40px; padding: 30px;
+      background: rgba(255,255,255,0.05); border-radius: 16px;
       border: 1px solid rgba(255,255,255,0.1);
     }
     .examples h3 {
-      color: #64ffda;
-      margin-bottom: 20px;
-      font-size: 1.3rem;
+      color: #64ffda; margin-bottom: 20px; font-size: 1.3rem;
     }
     .example-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      text-align: left;
+      display: flex; flex-direction: column; gap: 12px; text-align: left;
     }
     .example-item {
-      color: #b0b0b0;
-      font-style: italic;
-      padding: 8px 0;
+      color: #b0b0b0; font-style: italic; padding: 8px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .example-item:last-child { border-bottom: none; }
@@ -147,7 +104,7 @@
         <span class="mic-icon">🎤</span>
       </button>
       <div class="instruction">
-        Press and hold the microphone and ask anything about SBI Card or general questions like <strong>[translate:Aaj ka din kaisa hai?]</strong>
+        Press and hold the microphone and ask anything about SBI Card or questions like <strong>[translate:Aaj ka din kaisa hai?]</strong>
       </div>
       <div class="status" id="status">
         <div class="status-text">Ready to listen...</div>
@@ -236,41 +193,22 @@
       })
       .then(res => {
         if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
+        return res.arrayBuffer();
       })
-      .then(data => {
-        // If webhook sends mp3 URL (preferred)
-        if (data.audioUrl) {
-          const audio = new Audio(data.audioUrl);
-          audio.type = "audio/mpeg";
-          audio.play();
-          statusDiv.innerHTML = '<div class="status-text">🔊 Playing response...</div>';
-        }
-        // If webhook sends base64 encoded mp3
-        else if (data.audioBase64) {
-          const audioSrc = 'data:audio/mpeg;base64,' + data.audioBase64;
-          const audio = new Audio(audioSrc);
-          audio.play();
-          statusDiv.innerHTML = '<div class="status-text">🔊 Playing response...</div>';
-        }
-        // Fallback for text reply (if no audio)
-        else {
-          const responseText = data.reply || data.message || data.answer || 'Sorry, there is no reply.';
-          statusDiv.innerHTML = `<div class="status-text">💬 ${responseText}</div>`;
-          // Optionally, speak the text reply with SpeechSynthesis
-          if ('speechSynthesis' in window) {
-            const utter = new SpeechSynthesisUtterance(responseText);
-            utter.lang = 'en-IN';
-            speechSynthesis.speak(utter);
-          }
-        }
-        setTimeout(() => {
+      .then(buffer => {
+        const blob = new Blob([buffer], { type: 'audio/mpeg' });
+        const url = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+        audio.play();
+        statusDiv.innerHTML = '<div class="status-text">🔊 Playing response...</div>';
+        audio.onended = () => {
+          URL.revokeObjectURL(url);
           statusDiv.innerHTML = '<div class="status-text">Ready to listen...</div>';
-        }, 5000);
+        };
       })
       .catch(err => {
         console.error('Webhook error:', err);
-        statusDiv.innerHTML = '<div class="status-text">❌ Failed to send. Try again.</div>';
+        statusDiv.innerHTML = '<div class="status-text">❌ Failed to play audio. Try again.</div>';
         setTimeout(() => {
           statusDiv.innerHTML = '<div class="status-text">Ready to listen...</div>';
         }, 3000);
