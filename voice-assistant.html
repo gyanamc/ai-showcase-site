@@ -202,6 +202,11 @@
         const url = URL.createObjectURL(blob);
         const audio = new Audio(url);
         audio.play();
+        audio.onplaying = () => {
+          statusDiv.innerHTML = '<div class="status-text">🔊 Speaking...</div>';
+        };
+
+        
         statusDiv.innerHTML = '<div class="status-text">🔊 Playing response...</div>';
         audio.onended = () => {
           URL.revokeObjectURL(url);
